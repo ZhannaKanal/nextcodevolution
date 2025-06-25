@@ -1,0 +1,12 @@
+[
+  {
+    "slug": "hello",
+    "title": "Hello Next.js",
+    "content": "Welcome to the world of Next.js dynamic routes!"
+  },
+  {
+    "slug": "guide",
+    "title": "Tailwind Guide",
+    "content": "Tailwind CSS makes styling easy and consistent."
+  }
+]

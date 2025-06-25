@@ -6,9 +6,10 @@ import './globals.css';
 export default function HomePage() {
   return (
     <div>
-      <Layout>
+      {/* <Layout>
         <h1>Home page</h1>
-      </Layout>
+      </Layout> */}
+      <h1>Home page</h1>
       {/* <Link href='/about'>Go to About</Link> */}
     </div>
   );

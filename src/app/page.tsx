@@ -13,7 +13,9 @@ export default function HomePage() {
       <Link href='/blog' className="underline text-[blue]">Blog</Link> <br />
       <Link href='/products' className="underline text-[blue]">Products</Link> <br />
       <Link href='/articles/breaking-news-123?lang-en' className="underline text-[blue]">Read in English</Link> <br />
-      <Link href='/articles/breaking-news-123?lang-fr' className="underline text-[blue]">Read in French</Link>
+      <Link href='/articles/breaking-news-123?lang-fr' className="underline text-[blue]">Read in French</Link> <br />
+      <Link href='/order-product' className="underline text-[blue]">Order Product</Link> <br />
+
       {/* <Link href='/about'>Go to About</Link> */}
     </div>
   );

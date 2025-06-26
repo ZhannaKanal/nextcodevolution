@@ -17,11 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <header className="text-[30px] bg-[pink] py-[20px] my-[10px]">
+        <header className="text-[30px] bg-[grey] py-[20px] my-[10px] text-center">
           Header
         </header>
         {children}
-        <footer className="text-[30px] bg-[grey] py-[20px] my-[10px]">
+        <footer className="text-[30px] bg-[grey] py-[20px] my-[10px] text-center">
           Footer
         </footer>
         </body>

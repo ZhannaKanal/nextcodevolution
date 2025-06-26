@@ -10,6 +10,8 @@ export default function HomePage() {
         <h1>Home page</h1>
       </Layout> */}
       <h1>Home page</h1>
+      <Link href='/blog'>Blog</Link> <br />
+      <Link href='/products'>Products</Link>
       {/* <Link href='/about'>Go to About</Link> */}
     </div>
   );

@@ -4,15 +4,19 @@
 import '../globals.css'
 
 export default function ConplexDashboeadLayout({children,
-    users, revenue, notifications
+    users, revenue, notifications, login,
 }:{
     children:React.ReactNode,
     users:React.ReactNode,
     revenue:React.ReactNode,
     notifications:React.ReactNode,
+    login:React.ReactNode,
+
 
 }){
-    return (
+    // const isLoggedIn = false;
+    const isLoggedIn = true;
+    return isLoggedIn ? (
         <>
         <div>
 
@@ -29,5 +33,5 @@ export default function ConplexDashboeadLayout({children,
         <RevenueMetrics/>
         <Notifications/> */}
         </>
-    )
+    ): (login);
 }

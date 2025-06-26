@@ -1,14 +1,17 @@
-import Link from "next/link";
+'use client'
 
-export default async function NewsArticle({
+import Link from "next/link";
+import { use } from "react";
+
+export default function NewsArticle({
   params,
   searchParams,
 }: {
   params: Promise<{ articleId: string }>;
   searchParams: Promise<{ lang?: "en" | "es" | "fr" }>;
 }) {
-    const { articleId } = await params;
-    const { lang = "en" } = await searchParams;
+    const { articleId } = use(params);
+    const { lang = "en" } = use(searchParams);
   return (
     <div className="text-center text-[24px]">
       <h1>News article {articleId}</h1>

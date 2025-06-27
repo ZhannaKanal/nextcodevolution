@@ -84,38 +84,38 @@
 
 
 
-import { notFound } from 'next/navigation';
-import path from 'path';
-import { promises as fs } from 'fs';
+// import { notFound } from 'next/navigation';
+// import path from 'path';
+// import { promises as fs } from 'fs';
 
-export const runtime = 'nodejs';
+// export const runtime = 'nodejs';
 
-type Post = {
-  slug: string;
-  title: string;
-  content: string;
-};
+// type Post = {
+//   slug: string;
+//   title: string;
+//   content: string;
+// };
 
-// ✅ Используем встроенную сигнатуру функции страницы
-export default async function BlogPostPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const filePath = path.join(process.cwd(), 'public', 'data', 'posts.json');
-  const fileContents = await fs.readFile(filePath, 'utf8');
-  const data = JSON.parse(fileContents) as Post[];
+// // ✅ Используем встроенную сигнатуру функции страницы
+// export default async function BlogPostPage({
+//   params,
+// }: {
+//   params: { slug: string };
+// }) {
+//   const filePath = path.join(process.cwd(), 'public', 'data', 'posts.json');
+//   const fileContents = await fs.readFile(filePath, 'utf8');
+//   const data = JSON.parse(fileContents) as Post[];
 
-  const post = data.find((p) => p.slug === params.slug);
+//   const post = data.find((p) => p.slug === params.slug);
 
-  if (!post) {
-    notFound(); // ✅ официальная функция для 404
-  }
+//   if (!post) {
+//     notFound(); // ✅ официальная функция для 404
+//   }
 
-  return (
-    <div className="p-10">
-      <h1 className="text-2xl font-bold text-purple-700">{post.title}</h1>
-      <p className="mt-4 text-gray-700">{post.content}</p>
-    </div>
-  );
-}
+//   return (
+//     <div className="p-10">
+//       <h1 className="text-2xl font-bold text-purple-700">{post.title}</h1>
+//       <p className="mt-4 text-gray-700">{post.content}</p>
+//     </div>
+//   );
+// }

@@ -84,10 +84,11 @@
 
 
 
+import { notFound } from 'next/navigation';
 import path from 'path';
 import { promises as fs } from 'fs';
 
-export const runtime = 'nodejs'; // ✅ важно!
+export const runtime = 'nodejs';
 
 type Post = {
   slug: string;
@@ -95,13 +96,12 @@ type Post = {
   content: string;
 };
 
-type Props = {
-  params: {
-    slug: string;
-  };
-};
-
-export default async function BlogPostPage({ params }: Props) {
+// ✅ Используем встроенную сигнатуру функции страницы
+export default async function BlogPostPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const filePath = path.join(process.cwd(), 'public', 'data', 'posts.json');
   const fileContents = await fs.readFile(filePath, 'utf8');
   const data = JSON.parse(fileContents) as Post[];
@@ -109,7 +109,7 @@ export default async function BlogPostPage({ params }: Props) {
   const post = data.find((p) => p.slug === params.slug);
 
   if (!post) {
-    return <div>Post not found</div>;
+    notFound(); // ✅ официальная функция для 404
   }
 
   return (

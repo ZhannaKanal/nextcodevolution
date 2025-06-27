@@ -49,8 +49,45 @@
 
 // app/blog/[slug]/page.tsx
 
-import fs from 'fs';
+// import fs from 'fs';
+// import path from 'path';
+
+// type Post = {
+//   slug: string;
+//   title: string;
+//   content: string;
+// };
+
+// type Props = {
+//   params: {
+//     slug: string;
+//   };
+// };
+
+// export default async function BlogPostPage({ params }: Props) {
+//   const filePath = path.join(process.cwd(), 'public', 'data', 'posts.json');
+//   const data = JSON.parse(fs.readFileSync(filePath, 'utf8')) as Post[];
+
+//   const post = data.find(p => p.slug === params.slug);
+
+//   if (!post) {
+//     return <div>Post not found</div>;
+//   }
+
+//   return (
+//     <div>
+//       <h1>{post.title}</h1>
+//       <p>{post.content}</p>
+//     </div>
+//   );
+// } comment cause of netlify gives error
+
+
+
 import path from 'path';
+import { promises as fs } from 'fs';
+
+export const runtime = 'nodejs'; // ✅ важно!
 
 type Post = {
   slug: string;
@@ -66,18 +103,19 @@ type Props = {
 
 export default async function BlogPostPage({ params }: Props) {
   const filePath = path.join(process.cwd(), 'public', 'data', 'posts.json');
-  const data = JSON.parse(fs.readFileSync(filePath, 'utf8')) as Post[];
+  const fileContents = await fs.readFile(filePath, 'utf8');
+  const data = JSON.parse(fileContents) as Post[];
 
-  const post = data.find(p => p.slug === params.slug);
+  const post = data.find((p) => p.slug === params.slug);
 
   if (!post) {
     return <div>Post not found</div>;
   }
 
   return (
-    <div>
-      <h1>{post.title}</h1>
-      <p>{post.content}</p>
+    <div className="p-10">
+      <h1 className="text-2xl font-bold text-purple-700">{post.title}</h1>
+      <p className="mt-4 text-gray-700">{post.content}</p>
     </div>
   );
 }
